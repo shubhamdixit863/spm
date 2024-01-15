@@ -1,6 +1,7 @@
 package com.arealinterpolation.arealinterpolation.controllers;
 
 import com.arealinterpolation.arealinterpolation.dto.GisRequest;
+import com.arealinterpolation.arealinterpolation.dto.HealthCheck;
 import com.arealinterpolation.arealinterpolation.service.GISService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,10 @@ public class GISController {
     private GISService gisService;
 
     @GetMapping("/")
-    public ResponseEntity<String> healthCheck() {
-        return new ResponseEntity<>("working", HttpStatus.OK);
+    public ResponseEntity<HealthCheck> healthCheck() {
+        var response=new HealthCheck();
+        response.setMessage("Service Running");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/gis")
