@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,4 +31,11 @@ public class GISController {
         var data=gisService.getDemographicsData(gisRequest);
         return new ResponseEntity<>(data,HttpStatus.OK);
     }
+
+    @GetMapping("/gis")
+    public ResponseEntity<List<String>> geoJSON() {
+        var data=gisService.getGeoJson();
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
 }

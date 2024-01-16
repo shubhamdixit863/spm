@@ -5,6 +5,7 @@ import com.arealinterpolation.arealinterpolation.repository.GISRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -15,4 +16,9 @@ public class GISService {
     public Map<String, Object> getDemographicsData(GisRequest gisRequest){
         return gisRepository.getDemographics(gisRequest.latitude,gisRequest.longitude,gisRequest.distance);
     }
+
+    public List<String> getGeoJson() {
+       return gisRepository.getSpatialObjAsGeoJSON();
+    }
+
 }
